@@ -12,7 +12,7 @@ export const ProductProvider = (props) => { //props is an object
     //setProducts is a function that returns the updated version of 'products'
 
     const getProducts = () => {
-        return fetch("http://localhost:8088/products?_expand=productType") //_expand=location let's you have a method 'location' in animals object. if you want to do another method, you write '&_expand=objectName
+        return fetch("http://localhost:8088/products?_expand=productTypes") //_expand=location let's you have a method 'location' in animals object. if you want to do another method, you write '&_expand=objectName
         .then(res => res.json())
         .then(setProducts)
     }
@@ -25,7 +25,7 @@ export const ProductProvider = (props) => { //props is an object
             },
             body: JSON.stringify(productObj)
         })
-        .then(response => response.json())
+        .then(getProducts)
     }
 
     /*
