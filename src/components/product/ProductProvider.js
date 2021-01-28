@@ -1,5 +1,5 @@
 //we're importing the main react library here and two functions it exports
-//we will be using useState to hold and set the array of animals
+//we will be using useState to hold and set the array of products
 import React, { useState, createContext } from "react"
 
 //we're creating a data provider in react so we need to creat a context
