@@ -15,8 +15,6 @@ export const EmployeeForm = () => {
 
     const [employee, setEmployee] = useState({
       name: "",
-      address: "",
-      squareFootage: 0,
       locationsId: 0
     });
 
@@ -26,9 +24,9 @@ export const EmployeeForm = () => {
     Reach out to the world and get customers state
     and locations state on initialization, so we can provide their data in the form drop downs
     */
-    // useEffect(() => {
-    //   getCustomers().then(getLocations)
-    // }, [])
+    useEffect(() => {
+      getLocations()
+    }, [])
 
     //when a field changes, update state. The return will re-render and display based on the values in state
         // NOTE! What's happening in this function can be very difficult to grasp. Read it over many times and ask a lot questions about it.
@@ -70,16 +68,11 @@ export const EmployeeForm = () => {
           <h2 className="employeeForm__title">New Employee</h2>
           <fieldset>
               <div className="form-group">
-                  <label htmlFor="address">Employee address:</label>
-                  <input type="text" id="address" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Employee address" value={employee.address}/>
+                  <label htmlFor="name">Employee name: </label>
+                  <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Employee name" value={employee.name}/>
               </div>
           </fieldset>
-          <fieldset>
-              <div className="form-group">
-                  <label htmlFor="squareFootage">Employee squareFootage:</label>
-                  <input type="text" id="squareFootage" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Employee squareFootage" value={employee.squareFootage}/>
-              </div>
-          </fieldset>
+          
           <fieldset>
               <div className="form-group">
                   <label htmlFor="location">Assign to location: </label>
@@ -87,7 +80,7 @@ export const EmployeeForm = () => {
                       <option value="0">Select a location</option>
                       {locations.map(l => (
                           <option key={l.id} value={l.id}>
-                              {l.name}
+                              {l.address}
                           </option>
                       ))}
                   </select>
