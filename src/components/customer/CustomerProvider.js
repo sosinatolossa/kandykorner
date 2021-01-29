@@ -17,7 +17,7 @@ export const CustomerProvider = (props) => { //props is an object
         .then(setCustomers)
     }
 
-    const addCustomer = CustomerObj => {
+    const addCustomer = customerObj => {
         return fetch("http://localhost:8088/customers", {
             method: "POST",
             headers: {
@@ -32,7 +32,6 @@ export const CustomerProvider = (props) => { //props is an object
         return fetch(`http://localhost:8088/customers/${id}?_embed=products`)
             .then(res => res.json())
     }
-
     /*
         You return a context provider which has the
         `Customers` state, `getCustomers` function,
